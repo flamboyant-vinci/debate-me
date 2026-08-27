@@ -1,14 +1,16 @@
+# debate-me
+A Virtual debate room so you don't have to call up your debate partners on a weekend.
+
 # debsoc
 
 A virtual British Parliamentary debating room. You take one seat and speak into your
 microphone; the other seven speakers and the adjudication panel are AI, with names,
-voices, institutions and genuinely different levels of competence. The interface is a
-Discord server, because that is where circuit debating actually happens.
+voices, institutions and different levels of competence. 
 
 ## Running it
 
 ```bash
-npm run check     # smoke-test Groq and Rumik before you rely on them
+npm run check     # smoke-test voice and llms
 npm run dev       # http://localhost:3000
 ```
 
