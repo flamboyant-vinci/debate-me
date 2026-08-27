@@ -3,19 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --env-file=.env.local --watch-path=./server server/index.ts",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "NODE_ENV=production node --env-file=.env.local server/index.ts",
+    "lint": "eslint",
+    "check": "node --env-file=.env.local --no-warnings scripts/check-apis.ts",
+    "types": "tsc --noEmit"
   },
   "dependencies": {
+    "groq-sdk": "^1.5.0",
+    "langfuse": "^3.38.20",
     "next": "16.3.2",
+    "openai": "^7.5.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^26.2.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

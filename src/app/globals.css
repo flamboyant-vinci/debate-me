@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
+/* Discord's dark palette, so the room reads as a server at a glance. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-rail: #1e1f22;
+  --bg-sidebar: #2b2d31;
+  --bg-chat: #313338;
+  --bg-stage: #232428;
+  --bg-input: #383a40;
+  --bg-hover: #35373c;
+  --text-normal: #dbdee1;
+  --text-muted: #949ba4;
+  --text-bright: #f2f3f5;
+  --brand: #5865f2;
+  --green: #23a55a;
+  --red: #f23f43;
+  --yellow: #f0b232;
+  --border: #3f4147;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-rail: var(--bg-rail);
+  --color-sidebar: var(--bg-sidebar);
+  --color-chat: var(--bg-chat);
+  --color-stage: var(--bg-stage);
+  --color-inputbg: var(--bg-input);
+  --color-hover: var(--bg-hover);
+  --color-normal: var(--text-normal);
+  --color-muted: var(--text-muted);
+  --color-bright: var(--text-bright);
+  --color-brand: var(--brand);
+  --color-good: var(--green);
+  --color-bad: var(--red);
+  --color-warn: var(--yellow);
+  --color-line: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
+  background: var(--bg-chat);
+  color: var(--text-normal);
+  font-family: var(--font-geist-sans), "Segoe UI", Helvetica, sans-serif;
+  overscroll-behavior: none;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1b1e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes speaking-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px var(--green);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(35, 165, 90, 0.45);
+  }
+}
+.speaking {
+  animation: speaking-ring 1.4s ease-in-out infinite;
+}
+
+@keyframes poi-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.poi-card {
+  animation: poi-rise 220ms ease-out;
 }
